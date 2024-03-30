@@ -35,104 +35,24 @@
   --stripe-color: var(--bg-dark-gray-color);
 }
 
-.custom-container {
-  max-width: 1180px;
-  padding-left: 5;
-  padding-right: 5;
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
-/* custom bg */
-.custom-bg-color {
-  background-color: var(--bg-color);
+@keyframes blinker {
+  50% { border-color: transparent; }
 }
 
-.custom-bg-blue-color {
-  background-color: var(--bg-blue-color);
+.typing-div {
+  border-right: 2px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinker 0.5s step-end infinite;
 }
 
-.custom-bg-gray-color {
-  background-color: var(--bg-dark-gray-color);
-}
-
-.custom-bg-gray-mute-color {
-  background-color: var(--bg-gray-mute-color);
-}
-
-.custom-bg-light-gray-color {
-  background-color: var(--bg-light-gray-color);
-}
-
-.custom-bg-dark-gray-color {
-  background-color: var(--bg-dark-gray-color);
-}
-
-.custom-bg-transparent-red-color {
-  background-color: var(--transparent-red-color);
-}
-
-.custom-bg-transparent-yellow-color {
-  background-color: var(--transparent-yellow-color);
-}
-
-/* custom text */
-.custom-text-blue-color {
-  color: var(--blue-color);
-}
-
-.custom-text-dark-gray-color {
-  color: var(--text-dark-gray-color);
-}
-
-.custom-text-gray-color {
-  color: var(--text-gray-color);
-}
-
-.custom-text-decoration-blue-color {
-  text-decoration-color: var(--blue-color);
-}
-
-.custom-text-decoration-yellow-color {
-  text-decoration-color: var(--yellow-color);
-}
-
-/* custom border */
-.custom-border-mute-color {
-  border-color: var(--mute-color);
-}
-
-.custom-border-gray-color {
-  border-color: var(--border-gray-color);
-}
-
-.custom-border-invert-color {
-  border-color: var(--border-invert-color);
-}
-
-.custom-underline-yellow-color {
-  text-decoration: underline;
-  text-decoration-color: yellow;
-}
-
-.custom-hover-underline-yellow-color {
-  text-decoration: underline;
-  text-decoration-color: yellow;
-}
-
-.custom-underline-black-color {
-  text-decoration: underline;
-  text-decoration-color: black;
-}
-
-
-input::placeholder {
-  @apply text-sm text-gray-400;
-  /* @layer arial; */
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.typing-animation {
+  animation: typing 0.5s steps(40, end) infinite;
 }
 
 html,

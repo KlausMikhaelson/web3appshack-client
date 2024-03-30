@@ -3,11 +3,15 @@ import React, { createContext, useContext, useState, ReactNode, Dispatch, SetSta
 type AppContextType = {
   isFullHeight: boolean;
   updateIsFullHeight: Dispatch<SetStateAction<boolean>>;
+  isHeaderFullWidth: boolean;
+  updateIsHeaderFullWidth: Dispatch<SetStateAction<boolean>>;
 };
 
 const defaultState: AppContextType = {
   isFullHeight: false,
   updateIsFullHeight: () => {},
+  isHeaderFullWidth: false,
+  updateIsHeaderFullWidth: () => {},
 };
 
 const AppContext = createContext<AppContextType>(defaultState);
@@ -22,10 +26,17 @@ export const AppProvider = ({ children }: {
     setIsFullHeight(height);
   };
 
+  const [isHeaderFullWidth, setIsHeaderFullWidth] = useState(false);
+  const updateIsHeaderFullWidth = (height: any) => {
+    setIsHeaderFullWidth(height);
+  };
+
   return (
     <AppContext.Provider value={{
       isFullHeight, 
       updateIsFullHeight, 
+      isHeaderFullWidth, 
+      updateIsHeaderFullWidth, 
     }}>
       {children}
     </AppContext.Provider>

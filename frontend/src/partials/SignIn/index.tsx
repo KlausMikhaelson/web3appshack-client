@@ -24,7 +24,7 @@ const SignInComponent: NextPage = () => {
 
     // API call to log the user in
     try {
-      // const response = await signIn(signInData);
+      // const response = await signIn(loginData);
       // console.log('SignIn successful', response);
       // router.push('/dashboard');
     } catch (error) {
