@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --max-width: 900px; */
+  --border-radius: 12px;
+  /* --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace; */
+    
+  --fg-color: #000000;
+  --bg-color: #FFF;
+  --bg-yellow-color: yellow;
+  --bg-dark-gray-color: #67737f;
+  --bg-blue-color: #85bee9;
+  --bg-gray-color: #f2f4f5;
+  --bg-gray-mute-color: #dedede;
+  --bg-light-gray-color: #dde3e7;
+  /* --yellow-color: #ffd735; */
+  /* --yellow-color: #ffd735; */
+  /* --transparent-yellow-color: #ffd7351a; */
+  /* --red-color: rgb(255, 0, 0);
+  --transparent-red-color: rgba(255, 0, 0, 0.1); */
+  /* --mute-color: #b1b4b6; */
+  --border-color: #dedede;
+  --border-gray-color: #dedede;
+  /* --border-invert-color: #FFF;  */
+  --text-primary-color: #000000;
+  --text-dark-blue-color: #1f2b35;
+  --text-dark-gray-color: #67737f;
+  --text-gray-color: #727272;
+  --text-invert-color: #FFF;
+  /* --color-secondary: #6E6E76; */
+  --stripe-color: var(--bg-dark-gray-color);
+}
+
+.custom-container {
+  max-width: 1180px;
+  padding-left: 5;
+  padding-right: 5;
+}
+
+/* custom bg */
+.custom-bg-color {
+  background-color: var(--bg-color);
+}
+
+.custom-bg-blue-color {
+  background-color: var(--bg-blue-color);
+}
+
+.custom-bg-gray-color {
+  background-color: var(--bg-dark-gray-color);
+}
+
+.custom-bg-gray-mute-color {
+  background-color: var(--bg-gray-mute-color);
+}
+
+.custom-bg-light-gray-color {
+  background-color: var(--bg-light-gray-color);
+}
+
+.custom-bg-dark-gray-color {
+  background-color: var(--bg-dark-gray-color);
+}
+
+.custom-bg-transparent-red-color {
+  background-color: var(--transparent-red-color);
+}
+
+.custom-bg-transparent-yellow-color {
+  background-color: var(--transparent-yellow-color);
+}
+
+/* custom text */
+.custom-text-blue-color {
+  color: var(--blue-color);
+}
+
+.custom-text-dark-gray-color {
+  color: var(--text-dark-gray-color);
+}
+
+.custom-text-gray-color {
+  color: var(--text-gray-color);
+}
+
+.custom-text-decoration-blue-color {
+  text-decoration-color: var(--blue-color);
+}
+
+.custom-text-decoration-yellow-color {
+  text-decoration-color: var(--yellow-color);
+}
+
+/* custom border */
+.custom-border-mute-color {
+  border-color: var(--mute-color);
+}
+
+.custom-border-gray-color {
+  border-color: var(--border-gray-color);
+}
+
+.custom-border-invert-color {
+  border-color: var(--border-invert-color);
+}
+
+.custom-underline-yellow-color {
+  text-decoration: underline;
+  text-decoration-color: yellow;
+}
+
+.custom-hover-underline-yellow-color {
+  text-decoration: underline;
+  text-decoration-color: yellow;
+}
+
+.custom-underline-black-color {
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+
+input::placeholder {
+  @apply text-sm text-gray-400;
+  /* @layer arial; */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "GDS Transport",arial,sans-serif;
+}
+
+body {
+  color: var(--fg-color);
+  background: var(--bg-color);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
