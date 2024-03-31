@@ -41,6 +41,7 @@ const profile = () => {
         <form>
           <label htmlFor="interest" className="flex">
             <span className="mr-2">
+              // TODO: please help me get these interest tags in the row, Thank you!
               Interests:
               <span>
                 {selectedUserInterest.map((interest) => (
