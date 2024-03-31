@@ -26,6 +26,14 @@ const profile = () => {
     });
   };
 
+  const removeUserInterest = (index: number) => {
+    setSelectedUserInterest(() => {
+      const newInterest = [...selectedUserInterest];
+      newInterest.splice(index, 1);
+      return newInterest;
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
@@ -41,13 +49,17 @@ const profile = () => {
         <form>
           <label htmlFor="interest" className="flex">
             <span className="mr-2">
-              // TODO: please help me get these interest tags in the row, Thank you!
+              {/* TODO: please help me get these interest tags in the row, Thank you!*/}
               Interests:
               <span>
-                {selectedUserInterest.map((interest) => (
+                {selectedUserInterest.map((userInterest, index) => (
                   <span className="flex-row">
-                    <span className=" flex flex-auto flex-grow-0 items-center rounded-md min-w- px-2 py-2 shadow-md">
-                      <FaXmark /> {interest}
+                    <span className=" flex flex-auto flex-grow-0 items-center rounded-md min-w-auto px-2 py-2 shadow-md">
+                      <FaXmark
+                        onClick={() => removeUserInterest(index)}
+                        className="mr-2 hover:text-red-700 transition-colors cursor-pointer"
+                      />{" "}
+                      {userInterest}
                     </span>
                   </span>
                 ))}
