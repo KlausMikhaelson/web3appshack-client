@@ -19,7 +19,7 @@ export default function Header(props: any) {
 
   const tabs = [
     { name: 'Home', href: '/' },
-    { name: 'Find', href: '/tutor' },
+    { name: 'Find', href: '/Tutor' },
     { name: 'Forums', href: '/products' },
   ];
 
@@ -96,12 +96,12 @@ export default function Header(props: any) {
           </div>
 
           {/* Sign Up Button */}
-          <button
+          {/* <button
             className="py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={() => router.push('/signup')}
           >
             Sign Up
-          </button>
+          </button> */}
           <DynamicWidget key={'flowwallet'} />
         </div>
       </div>
