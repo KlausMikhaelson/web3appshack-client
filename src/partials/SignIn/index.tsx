@@ -21,19 +21,43 @@ const SignInComponent: NextPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
-
-    // API call to log the user in
+  
     try {
-      // const response = await signIn(loginData);
-      // console.log('SignIn successful', response);
-      // router.push('/dashboard');
+      const response = await fetch('http://localhost:4000/api/v1/student/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: signInData.email,
+          password: signInData.password,
+        }),
+      });
+  
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to log in. Please try again.');
+      }
+  
+      // Assuming the token is in the response data as shown in the example response
+      if (data.token) {
+        // Save the token to local storage
+        localStorage.setItem('authToken', data.token);
+        
+        console.log('SignIn successful', data);
+        // Redirect student to dashboard
+        router.push('/forums');
+      } else {
+        throw new Error('Authentication token was not provided');
+      }
     } catch (error) {
-      setError('Failed to log in. Please try again.');
+      setError(error.message || 'Failed to log in. Please try again.');
       console.error(error);
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="flex flex-col w-full max-w-md mx-auto my-10">

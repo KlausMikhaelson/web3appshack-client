@@ -1,26 +1,54 @@
 import { useState, useEffect } from "react";
 import { FaThumbsUp, FaComments, FaRegClock, FaReply } from "react-icons/fa";
 
-const QAComponent = () => {
+const QAComponent = ({ chatId }: any) => {
   const [visible, setVisible] = useState(true);
 
   // Expanded sample data to include answers
   const thread = [
     {
-      user: "Software Engineering",
-      role: "Software Engineer",
+      "student": "Michael Park",
+      "role": "University of Regina",
+      "content": "How many modules per semester do exchange students take?",
+      "likes": 16,
+      "comments": 4,
+      "daysAgo": 1,
+      "answers": [
+        {
+          "student": "Emily Tran",
+          "content": "I did 4 last semester and it was quite manageable. Depends on how heavy each module is, I guess!",
+          "likes": 8,
+          "daysAgo": 1
+        },
+        {
+          "student": "Marcus Chen",
+          "content": "Check with the international office too.",
+          "likes": 5,
+          "daysAgo": 1
+        }
+      ]
+    },
+    {
+      student: "Vikram Victor",
+      role: "University of Regina",
       content:
-        "What level would I be and what salary should I be asking for in Tampa? I have 5 years of experience as a Software Engineer. I've done a lot in that time with Cloud Development and even led a product...",
+        "Anyone interested in forming a study group for CS711?",
       likes: 16,
       comments: 4,
       daysAgo: 1,
       answers: [
         {
-          user: "Tech Recruiter",
+          student: "Sanchia Shetty",
           content:
-            "With your experience, you should aim for a level 3 position, which typically offers a competitive salary in Tampa in the range of $XX,XXX to $XX,XXX, depending on the company.",
+            "Yes please!! I've got a few more friends who are interested in joining too!",
           likes: 12,
           daysAgo: 1,
+        },
+        {
+          "student": "Rahul Gupta",
+          "content": "I'm interested! Struggling with the latest assignment and could use some help.",
+          "likes": 9,
+          "daysAgo": 1
         },
         // ... Add more answers if needed
       ],
@@ -45,13 +73,13 @@ const QAComponent = () => {
       <div className="relative w-full mb-10">
         {" "}
         {/* Wrapper for positioning */}
-        {thread.map((post, index) => (
+        {[thread[chatId]].map((post, index) => (
           <div
             key={index}
             className="w-full mb-10 p-4 border-b last:border-b-0"
           >
             <div className="flex items-center mb-2">
-              <h3 className="text-lg font-bold">{post.user}</h3>
+              <h3 className="text-lg font-bold">{post.student}</h3>
               <span className="ml-2 text-sm text-gray-500">- {post.role}</span>
             </div>
             <p className="mb-3">{post.content}</p>
@@ -71,7 +99,9 @@ const QAComponent = () => {
               >
                 <div className="flex items-center mb-2">
                   <FaReply className="transform rotate-180 text-gray-500" />
-                  <h4 className="text-md font-semibold ml-2">{answer.user}</h4>
+                  <h4 className="text-md font-semibold ml-2">
+                    {answer.student}
+                  </h4>
                   <span className="ml-2 text-sm text-gray-500">answered</span>
                 </div>
                 <p className="text-sm mb-2">{answer.content}</p>

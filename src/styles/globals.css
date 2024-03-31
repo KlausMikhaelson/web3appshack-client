@@ -45,7 +45,6 @@
 }
 
 .typing-div {
-  border-right: 2px solid;
   white-space: nowrap;
   overflow: hidden;
   animation: blinker 0.5s step-end infinite;

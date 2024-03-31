@@ -9,8 +9,8 @@ export default function Header(props: any) {
 
   const tabs = [
     { name: 'Home', href: '/' },
-    { name: 'Find', href: '/solutions' },
-    { name: 'Forums', href: '/products' },
+    { name: 'Find', href: '/' },
+    { name: 'Forums', href: '/forums' },
   ];
 
   return (
@@ -18,13 +18,14 @@ export default function Header(props: any) {
       className="flex w-full items-center justify-around custom-bg-white-color h-20 border-b-[1.5px] custom-border-color"
     >
       <div
-        className={`${isHeaderFullWidth ? "w-full px-32" : "container custom-container"} flex justify-between items-center custom-bg-invert-color`}
+        className={`${isHeaderFullWidth ? "w-full" : "container custom-container"} flex justify-between items-center custom-bg-invert-color px-32`}
       >
         <div
           className="custom-text-color text-2xl font-bold cursor-pointer"
           onClick={() => router.push('/')}
         >
-          Stu<span className="text-red">Q</span>
+          {/* LOGO HERE */}
+          <img src="/assets/logo.png" alt="Logo" className="pl-2 h-16 w-auto" />
         </div>
 
         {/* Tabs and Sign Up Button Group */}
