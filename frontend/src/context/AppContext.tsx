@@ -5,6 +5,10 @@ type AppContextType = {
   updateIsFullHeight: Dispatch<SetStateAction<boolean>>;
   isHeaderFullWidth: boolean;
   updateIsHeaderFullWidth: Dispatch<SetStateAction<boolean>>;
+  email: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  address: string;
+  setAddress: Dispatch<SetStateAction<string>>;
 };
 
 const defaultState: AppContextType = {
@@ -12,6 +16,10 @@ const defaultState: AppContextType = {
   updateIsFullHeight: () => {},
   isHeaderFullWidth: false,
   updateIsHeaderFullWidth: () => {},
+  email: '',
+  setEmail: () => {},
+  address: '',
+  setAddress: () => {},
 };
 
 const AppContext = createContext<AppContextType>(defaultState);
@@ -31,12 +39,19 @@ export const AppProvider = ({ children }: {
     setIsHeaderFullWidth(height);
   };
 
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+
   return (
     <AppContext.Provider value={{
       isFullHeight, 
       updateIsFullHeight, 
       isHeaderFullWidth, 
       updateIsHeaderFullWidth, 
+      email,
+      setEmail,
+      address,
+      setAddress,
     }}>
       {children}
     </AppContext.Provider>
