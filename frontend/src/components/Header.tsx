@@ -1,17 +1,65 @@
 import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
 import { useAppContext } from "@/context/AppContext";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+import {useDynamicContext} from "@dynamic-labs/sdk-react-core";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import {backendUrl} from "@/pages/_app";
 
 export default function Header(props: any) {
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
   const { isHeaderFullWidth } = useAppContext();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const {user} = useDynamicContext();
 
   const tabs = [
     { name: 'Home', href: '/' },
     { name: 'Find', href: '/solutions' },
     { name: 'Forums', href: '/products' },
   ];
+
+  const getUserFromEmail = async(email: string) => {
+    if(email && address) {
+      console.log('Email:', email, 'Address:', address);
+      await axios.get(`${backendUrl}/user/getUser`, {
+        headers: {
+          email: email,
+        }
+      }).then((response) => {
+        console.log('User from email:', response.data);
+      }).catch(async(error) => {
+        if(error.response.status === 404) {
+          await axios.post(`${backendUrl}/user/createUser`,{
+            email: email,
+            address: address,
+          })
+        } else {
+          console.log('Error:', error);
+        }
+      });
+    }
+  }
+
+  useEffect(() => {
+    console.log('User:', user);
+    if(user) {
+      for(let i =0; i < user?.verifiedCredentials.length; i++) {
+        if(user?.verifiedCredentials[i].email) {
+          console.log('Email:', user?.verifiedCredentials[i].email);
+          setEmail(user?.verifiedCredentials[i].email!);
+          break;
+        }
+        if(user?.verifiedCredentials[i].address) {
+          console.log('Address:', user?.verifiedCredentials[i].address);
+          setAddress(user?.verifiedCredentials[i].address!);
+        }
+      }
+      getUserFromEmail(email);
+    }
+  }, [user, email, address]);
 
   return (
     <div
@@ -49,6 +97,7 @@ export default function Header(props: any) {
           >
             Sign Up
           </button>
+          <DynamicWidget key={'flowwallet'} />
         </div>
       </div>
     </div>
